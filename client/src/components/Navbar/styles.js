@@ -3,16 +3,16 @@ import { deepPurple } from "@material-ui/core/colors";
 
 export default makeStyles((theme) => ({
   appBar: {
+    background: "rgba(156, 136, 134)",
     borderRadius: 15,
     margin: "30px 0",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "10px 50px",
+    justifyContent: "center",
+    padding: "10px",
   },
   heading: {
-    color: "rgba(0,183,255, 1)",
+    color: "rgba(255, 250, 232)",
     textDecoration: "none",
   },
   image: {

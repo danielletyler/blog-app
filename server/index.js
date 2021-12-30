@@ -23,7 +23,7 @@ app.use("/user", userRoutes);
 
 //for deployment
 app.get("/", (req, res) => {
-  res.send("Hello to Memories API");
+  res.send("Hello to API");
 });
 
 const PORT = process.env.PORT || 8000;

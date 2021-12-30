@@ -19,6 +19,16 @@ const Form = ({ currentId, setCurrentId }) => {
   });
   const user = JSON.parse(localStorage.getItem("profile"));
 
+  const clear = () => {
+    setCurrentId(null);
+    setPostData({
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
+  };
+
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
@@ -40,21 +50,11 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <Paper className={classes.paper}>
         <Typography variant="h6" align="center">
-          Please sign in to create your own memories and like others' memories
+          Please sign in to add new blog posts.
         </Typography>
       </Paper>
     );
   }
-
-  const clear = () => {
-    setCurrentId(null);
-    setPostData({
-      title: "",
-      message: "",
-      tags: "",
-      selectedFile: "",
-    });
-  };
 
   return (
     <Paper className={classes.paper}>
@@ -65,7 +65,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? "Editing a Memory" : "Creating a Memory"}
+          {currentId ? "Editing Post" : "New Blog Post"}
         </Typography>
         <TextField
           name="title"
@@ -80,6 +80,8 @@ const Form = ({ currentId, setCurrentId }) => {
           variant="outlined"
           label="Message"
           fullWidth
+          multiline
+          minRows={4}
           value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
@@ -108,18 +110,17 @@ const Form = ({ currentId, setCurrentId }) => {
           className={classes.buttonSubmit}
           variant="contained"
           color="primary"
-          size="large"
+          size="small"
           type="submit"
-          fullWidth
         >
           submit
         </Button>
         <Button
+          className={classes.buttonSubmit}
           variant="contained"
           color="secondary"
           size="small"
           onClick={clear}
-          fullWidth
         >
           clear
         </Button>
