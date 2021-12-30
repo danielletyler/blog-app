@@ -22,7 +22,8 @@ const Post = ({ post, setCurrentId }) => {
   const history = useNavigate();
 
   const handleEdit = () => {
-    history("/add", { state: { setCurrentId: setCurrentId } });
+    console.log(post._id);
+    history("/add", { state: { post: post } });
   };
 
   return (

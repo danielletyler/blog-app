@@ -7,10 +7,11 @@ import useStyles from "../Form/styles";
 import decode from "jwt-decode";
 import { getPosts } from "../../actions/posts";
 
-export const Add = ({ currentId, setCurrentId }) => {
+export const Add = ({ post }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useNavigate();
+  const [currentId, setCurrentId] = useState(post);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const location = useLocation();
 
@@ -68,7 +69,7 @@ export const Add = ({ currentId, setCurrentId }) => {
           </Button>
         )}
       </Toolbar>
-      <Form currentId={currentId} setCurrentId={setCurrentId} />
+      <Form currentId={location.state.post._id} setCurrentId={setCurrentId} />
     </div>
   );
 };
