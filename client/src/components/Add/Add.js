@@ -7,13 +7,15 @@ import useStyles from "../Form/styles";
 import decode from "jwt-decode";
 import { getPosts } from "../../actions/posts";
 
-export const Add = ({ post }) => {
+export const Add = () => {
+  const location = useLocation();
+  let post;
+  if (location?.state?.post) post = location.state.post;
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useNavigate();
   const [currentId, setCurrentId] = useState(post);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  const location = useLocation();
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -69,7 +71,12 @@ export const Add = ({ post }) => {
           </Button>
         )}
       </Toolbar>
-      <Form currentId={location.state.post._id} setCurrentId={setCurrentId} />
+      {console.log(post?._id)}
+      {!post ? (
+        <Form />
+      ) : (
+        <Form currentId={post._id} setCurrentId={setCurrentId} />
+      )}
     </div>
   );
 };
