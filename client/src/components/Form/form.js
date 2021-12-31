@@ -80,6 +80,7 @@ const Form = ({ currentId }) => {
           label="Message"
           fullWidth
           multiline
+          style={{ whiteSpace: "pre-wrap" }}
           minRows={4}
           value={postData.message}
           onChange={(e) =>

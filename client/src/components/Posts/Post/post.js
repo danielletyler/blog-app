@@ -40,7 +40,7 @@ const Post = ({ post }) => {
         title={post.title}
       />
       <div className={classes.overlay}>
-        <Typography variant="h6">{post.name}</Typography>
+        {/* <Typography variant="h6">{post.name}</Typography> */}
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
         </Typography>
@@ -69,7 +69,7 @@ const Post = ({ post }) => {
       <CardContent>
         <div
           style={{
-            maxHeight: "117px",
+            height: "117px",
             overflow: "hidden",
           }}
         >
