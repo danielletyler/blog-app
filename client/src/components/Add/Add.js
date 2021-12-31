@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Toolbar, Avatar, Typography, Button } from "@material-ui/core";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Form from "../Form/form";
 import useStyles from "../Form/styles";
 import decode from "jwt-decode";
-import { getPosts } from "../../actions/posts";
 
-export const Add = () => {
+const Add = () => {
   const location = useLocation();
   let post;
   if (location?.state?.post) post = location.state.post;
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useNavigate();
-  const [currentId, setCurrentId] = useState(post);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   const logout = () => {
@@ -72,11 +70,9 @@ export const Add = () => {
         )}
       </Toolbar>
       {console.log(post?._id)}
-      {!post ? (
-        <Form />
-      ) : (
-        <Form currentId={post._id} setCurrentId={setCurrentId} />
-      )}
+      {!post ? <Form /> : <Form currentId={post._id} />}
     </div>
   );
 };
+
+export default Add;

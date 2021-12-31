@@ -7,6 +7,7 @@ import {
   CardMedia,
   Button,
   Typography,
+  Link,
 } from "@material-ui/core";
 import moment from "moment";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -15,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { deletePost, likePost } from "../../../actions/posts";
 import { useNavigate } from "react-router-dom";
 
-const Post = ({ post, setCurrentId }) => {
+const Post = ({ post }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -24,6 +25,11 @@ const Post = ({ post, setCurrentId }) => {
   const handleEdit = () => {
     console.log(post._id);
     history("/add", { state: { post: post } });
+  };
+
+  const handleTitleClick = () => {
+    console.log("Title Click worked");
+    history("/fullpost", { state: { post: post } });
   };
 
   return (
@@ -52,7 +58,12 @@ const Post = ({ post, setCurrentId }) => {
           {post.tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
-      <Typography className={classes.title} variant="h5" gutterBottom>
+      <Typography
+        className={classes.title}
+        variant="h5"
+        gutterBottom
+        onClick={handleTitleClick}
+      >
         {post.title}
       </Typography>
       <CardContent>

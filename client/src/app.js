@@ -4,7 +4,8 @@ import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Auth from "./components/Auth/Auth";
-import { Add } from "./components/Add/Add";
+import Add from "./components/Add/Add";
+import FullPost from "./components/FullPost/FullPost";
 import theme from "./theme";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
             <Route path="/" exact element={<Home />} />
             <Route path="/auth" exact element={<Auth />} />
             <Route path="/add" exact element={<Add />} />
+            <Route path="/fullpost" exact element={<FullPost />} />
           </Routes>
         </Container>
       </ThemeProvider>
