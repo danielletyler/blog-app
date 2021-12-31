@@ -5,7 +5,7 @@ import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
 
-const Form = ({ currentId, setCurrentId }) => {
+const Form = ({ currentId }) => {
   const dispatch = useDispatch();
   const post = useSelector((state) =>
     currentId ? state.Posts.find((p) => p._id === currentId) : null
@@ -20,7 +20,6 @@ const Form = ({ currentId, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const clear = () => {
-    setCurrentId(null);
     setPostData({
       title: "",
       message: "",

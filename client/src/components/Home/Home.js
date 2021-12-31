@@ -24,9 +24,7 @@ const Home = () => {
           alignItems="stretch"
           spacing={3}
         >
-          <Grid item xs={12} sm={7}>
-            <Posts setCurrentId={setCurrentId} />
-          </Grid>
+          <Posts setCurrentId={setCurrentId} />
         </Grid>
       </Container>
     </Grow>

@@ -56,14 +56,21 @@ const Post = ({ post, setCurrentId }) => {
         {post.title}
       </Typography>
       <CardContent>
-        <Typography
-          variant="body2"
-          color="textSecondary"
-          component="p"
-          gutterBottom
+        <div
+          style={{
+            maxHeight: "117px",
+            overflow: "hidden",
+          }}
         >
-          {post.message}
-        </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            gutterBottom
+          >
+            {post.message}
+          </Typography>
+        </div>
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Button
